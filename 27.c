@@ -6,7 +6,7 @@ Pratham Savjani 20-11-2021*/
 int Binary_search(int e,int n,int *arr)
 {
     int left=0,right=n-1,middle;
-    while(left<right)
+    while(left<=right)
     {
         middle=(left+right)/2;
         if(arr[middle]==e)
