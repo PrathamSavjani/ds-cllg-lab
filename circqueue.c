@@ -4,44 +4,45 @@ int f=-1,r=-1,q[N];
 
 void cqueue_ins(int x)
 {
-    if(r==N-1)
-    {
-        r=0;
-    }
-    else
-    {
-        r=r+1;
-    }
-    if(f==r)
-    {
-        printf("Overflow");
-        return;
-    }
-    q[r]=x;
-    if(f==-1)
-    {
-        f=0;
-    }
-    return;
+
+
+if(r==-1&&f==-1){
+	r=f=0;
+}
+else if((f==0 && r==N-1 ) || f==r+1){
+	printf("overflow");
+	return;
+}
+else if(r==N-1 && f!=0){
+	r=0;
+}
+else{
+	r++;
+}
+q[r]=x;
+return;
+
 }
 
 int cqueue_del()
 {
     int y;
+
+    printf("f=%d r=%d",f,r);
     if(f==-1)
     {
         printf("Underflow");
         return 0;
     }
     y=q[f];
+    
     if(f==r)
     {
         f=r=-1;
         return y;
-    }
-    if(f==N-1)
+    }else if(f==N-1)
     {
-        f=0;
+        f=r=0;
     }
     else
     {
@@ -53,6 +54,7 @@ int cqueue_del()
 cdisplay()
 {
     int i,j;
+
     if(f==-1&&r==-1)
     {
         printf("Queue Underflow");
